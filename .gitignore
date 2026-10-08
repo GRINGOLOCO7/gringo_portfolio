@@ -1,0 +1,21 @@
+# Private source material — NOT for publication.
+# GitHub Pages serves every file in the repository, so anything committed here
+# is publicly readable at its URL even with nothing linking to it.
+
+# Original full-resolution photos and video (hundreds of MB).
+# tools/build-assets.py turns these into the optimised files in assets/img/.
+projects_assets/
+
+# The research dossier: unpublished figures and notes marked for verification.
+me.md
+
+# The original CV. A web copy is published deliberately at assets/cv/.
+CV.pdf
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp

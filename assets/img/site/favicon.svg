@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Gregorio Orlando">
+  <rect width="32" height="32" rx="6" fill="#15171B"/>
+  <!-- Schematic 2-link arm projecting onto a surface -->
+  <path d="M8 25V15l7-6" fill="none" stroke="#FAF9F7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="8" cy="25" r="2.4" fill="#B93A1B"/>
+  <circle cx="8" cy="15" r="1.7" fill="#FAF9F7"/>
+  <path d="M15 9l5.5 3.4-3.6 5.6z" fill="#B93A1B"/>
+  <path d="M21 24.5h4" stroke="#FAF9F7" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+</svg>
