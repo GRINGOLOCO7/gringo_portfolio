@@ -106,34 +106,61 @@
   }
 
   /* ---------- Contact form ------------------------------------
-     A static site cannot post mail, so the form composes the
-     message and hands it to the visitor's mail client. The
-     address is also printed under the form, so there is always a
-     path that works even if this never runs.
+     The form posts over HTTPS to the endpoint in its action. This
+     submits it with fetch() so the visitor stays on the page and
+     gets an answer in place. With JavaScript off the browser posts
+     the same form natively, so the form still works.
      ------------------------------------------------------------ */
   function initContactForm() {
     var form = document.getElementById("contact-form");
     if (!form) return;
 
-    var to = (form.getAttribute("action") || "").replace(/^mailto:/, "");
-    if (!to) return;
+    var action = form.getAttribute("action") || "";
+    // Only take over when the endpoint is one we know how to talk to.
+    if (action.indexOf("https://formsubmit.co/") !== 0) return;
+    if (!window.fetch || !window.FormData) return; // let the native POST happen
+
+    var ajax = action.replace("formsubmit.co/", "formsubmit.co/ajax/");
+    var statusEl = form.querySelector(".cform__status");
+    var button = form.querySelector('button[type="submit"]');
+    var fallback = "Could not send just now — please email gorlando.ieu2022@student.ie.edu directly.";
+
+    function say(text, kind) {
+      if (!statusEl) return;
+      statusEl.textContent = text;
+      statusEl.hidden = false;
+      statusEl.setAttribute("data-state", kind || "");
+    }
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (typeof form.reportValidity === "function" && !form.reportValidity()) return;
 
-      var name = (form.elements["name"].value || "").trim();
-      var email = (form.elements["email"].value || "").trim();
-      var message = (form.elements["message"].value || "").trim();
+      var payload = {};
+      new FormData(form).forEach(function (value, key) { payload[key] = value; });
 
-      var subject = name ? "Portfolio enquiry from " + name : "Portfolio enquiry";
-      var body = [message, "", "--", name, email].join("\n");
+      button.disabled = true;
+      say("Sending…", "busy");
 
-      window.location.href = "mailto:" + to +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
+      fetch(ajax, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(payload)
+      })
+        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (data) {
+          if (data && String(data.success) === "true") {
+            form.reset();
+            say("Thank you — your message is on its way.", "ok");
+          } else {
+            say(fallback, "error");
+          }
+        })
+        .catch(function () { say(fallback, "error"); })
+        .then(function () { button.disabled = false; });
     });
   }
+
 
   /* ---------- 3. Scroll reveal ---------- */
   function initReveal() {

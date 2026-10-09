@@ -753,6 +753,17 @@ a.card:hover { border-color: var(--ink); transform: translateY(-2px); }
 textarea.field__i { resize: vertical; min-height: 6.5rem; display: block; }
 
 .cform__foot { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 0.35rem; }
+/* Honeypot: off-screen rather than display:none, which some bots skip. */
+.cform__honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+.cform__status {
+  font-size: 0.82rem; line-height: 1.5; margin: 0.8rem 0 0;
+  padding-left: 0.7rem; border-left: 2px solid var(--rule); color: var(--ink-2);
+}
+.cform__status[data-state="ok"] { border-left-color: var(--accent); color: var(--ink); }
+.cform__status[data-state="error"] { border-left-color: var(--accent); color: var(--ink-2); }
+.cform__status[data-state="busy"] { color: var(--ink-3); }
+.cform button[disabled] { opacity: 0.55; cursor: progress; }
 .cform__note { font-size: 0.78rem; line-height: 1.5; color: var(--ink-3); margin: 0.9rem 0 0; }
 .cform__note a { color: var(--ink-2); }
 

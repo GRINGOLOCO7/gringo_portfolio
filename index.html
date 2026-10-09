@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&display=swap">
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/site.css?v=20261009a">
 
 <script type="application/ld+json">
 {
@@ -679,27 +679,27 @@
         <div class="skillgroup">
           <h3>Robotics middleware</h3>
           <ul>
-            <li>ROS 1 (Noetic) — AIfred</li>
-            <li>ROS 2 — Formula Student</li>
+            <li>ROS 1: AIfred, theconstructsim.com online course, WX250s Trossen Robotics, </li>
+            <li>ROS 2: Botzo, Polywall, S-Graphs, Formula Student</li>
             <li>rosbag, launch files, TF frames</li>
-            <li>URDF modelling · Docker</li>
+            <li>URDF modelling, Gazebo, Rviz</li>
           </ul>
         </div>
         <div class="skillgroup">
           <h3>Programming</h3>
           <ul>
             <li>Python</li>
-            <li>C++ · C</li>
-            <li>Arduino / embedded control</li>
+            <li>C, C++</li>
+            <li>Arduino, Raspberry Pi, embedded control</li>
             <li>Linux (Ubuntu, Raspberry Pi OS)</li>
-            <li>Git &amp; GitHub · MySQL</li>
+            <li>Git &amp; GitHub</li>
           </ul>
         </div>
         <div class="skillgroup">
           <h3>Simulation &amp; learning</h3>
           <ul>
-            <li>NVIDIA Isaac Sim · Isaac Lab</li>
-            <li>RL for locomotion — in progress</li>
+            <li>NVIDIA Isaac Sim, Isaac Lab, PyBullet</li>
+            <li>RL for locomotion (in progress)</li>
             <li>Inverse kinematics &amp; gait planning</li>
           </ul>
         </div>
@@ -708,7 +708,7 @@
           <ul>
             <li>Camera-based workspace perception</li>
             <li>Image processing pipelines (Python)</li>
-            <li>Face / eye detection — MediaPipe, Haar</li>
+            <li>Face / eye detection (MediaPipe, Haar)</li>
             <li>LiDAR point clouds &amp; SLAM maps</li>
             <li>OptiTrack motion capture</li>
           </ul>
@@ -717,16 +717,16 @@
           <h3>Hardware &amp; CAD</h3>
           <ul>
             <li>Fusion 360</li>
-            <li>3D printing — lab lead</li>
+            <li>3D printing (lab lead)</li>
             <li>Servos, IMUs, motor drivers</li>
             <li>Battery &amp; voltage regulation</li>
-            <li>ESP32, Raspberry Pi</li>
+            <li>Arduino, ESP32, Raspberry Pi</li>
           </ul>
         </div>
         <div class="skillgroup">
           <h3>XR &amp; research methods</h3>
           <ul>
-            <li>Unity · HoloLens 2</li>
+            <li>Unity &amp; HoloLens 2</li>
             <li>Polygonal map representation</li>
             <li>Experimental design &amp; Qualtrics</li>
             <li>pandas, SciPy, Pingouin</li>
@@ -782,12 +782,19 @@
       <div class="foot-contact">
         <p class="eyebrow">Get in touch</p>
 
-        <!-- Static hosting cannot post mail server-side, so this composes the
-             message and hands it to the visitor's mail client. To switch to a
-             hosted form service later, change the action/method and delete the
-             submit handler in assets/js/site.js. -->
-        <form class="cform" id="contact-form" method="post" enctype="text/plain"
-              action="mailto:gorlando.ieu2022@student.ie.edu">
+        <!-- GitHub Pages is static, so the form posts over HTTPS to FormSubmit,
+             which forwards it to the address in the action. site.js submits it
+             with fetch() and reports the result inline; with JavaScript off the
+             browser posts natively and FormSubmit shows its own confirmation.
+             NOTE: the very first submission triggers a one-time activation
+             email to that address - click the link in it or nothing forwards. -->
+        <form class="cform" id="contact-form" method="POST"
+              action="https://formsubmit.co/gorlando.ieu2022@student.ie.edu">
+          <input type="hidden" name="_subject" value="Portfolio enquiry">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <!-- Honeypot: invisible to people, irresistible to bots. -->
+          <input type="text" name="_honey" class="cform__honey" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="cform__row">
             <label class="field">
               <span class="field__l">Name</span>
@@ -805,8 +812,9 @@
           <div class="cform__foot">
             <button class="btn btn--primary" type="submit">Send message</button>
           </div>
+          <p class="cform__status" role="status" aria-live="polite" hidden></p>
           <p class="cform__note">
-            This opens your email app with the message ready to send. Prefer to write directly?
+            Sent straight to my inbox over a secure connection. Prefer to write directly?
             <a href="mailto:gorlando.ieu2022@student.ie.edu">gorlando.ieu2022@student.ie.edu</a>
           </p>
         </form>
@@ -830,6 +838,6 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js" defer></script>
+<script src="assets/js/site.js?v=20261009a" defer></script>
 </body>
 </html>
