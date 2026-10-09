@@ -171,7 +171,6 @@ def main():
     img("autobin/CircuitDiagram.png", "other/autobin-circuit.webp", 800)
     vid("autobin/demo.mp4", "other/autobin.mp4", 560, ss=1, t=12, crf=31)
     vid("alllenguage/DemoMain (1).mp4", "other/translator.mp4", 960, ss=20, t=26, speed=1.6, crf=33)
-    frame("2048game/Presentation.mp4", "other/2048.webp", 60, 900)
 
     print("\nPersonal")
     img("me/ski.png", "gallery/ski.webp", 900)

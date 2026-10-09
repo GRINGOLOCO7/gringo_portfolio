@@ -8,9 +8,8 @@ go out of date.
 
 ## Do these first
 
-1. **LinkedIn is missing.** No profile URL appears in `me.md` or your CV, so rather than ship a dead
-   link the markup is commented out. Search `TODO Gregorio` in `index.html` — two places, hero and
-   footer. Paste the URL, remove the comment markers.
+1. ~~**LinkedIn is missing.**~~ Done — `linkedin.com/in/gregorio-orlando-a482b8295` is now wired into
+   the hero buttons, the footer, and the `sameAs` list in the page's structured data.
 
 2. **The published CV contains your phone number.** It sits at
    `assets/cv/Gregorio-Orlando-CV.pdf` and is linked from the hero and the footer. Swap in a version
