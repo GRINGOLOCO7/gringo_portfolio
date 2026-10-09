@@ -146,12 +146,19 @@ def main():
     vid("botzo/FULL_LEG.gif", "botzo/leg.mp4", 1000, crf=31)
 
     print("\nPolyWall")
-    img("polywall/system_overview/system_overview.png", "polywall/pipeline.webp", 1800, quality=82)
+    img("polywall/system_overview/system_overview.png", "polywall/overview.webp", 1800, quality=82)
+    img("polywall/system_overview/pipeline.png", "polywall/pipeline.webp", 1400)
     img("polywall/result/D1_rviz.png", "polywall/before.webp", 900)
     img("polywall/result/D1_our.png", "polywall/after.webp", 900)
-    img("polywall/result/D2_rviz.png", "polywall/d2-before.webp", 760)
-    img("polywall/result/D2_our.png", "polywall/d2-after.webp", 760)
-    img("polywall/result/D3_our.png", "polywall/d3-after.webp", 760)
+    # Method comparison, four per environment: raw cloud, two baselines, ours.
+    img("polywall/result/D2_rviz.png", "polywall/d2-rviz.webp", 560)
+    img("polywall/result/D2_CH.png", "polywall/d2-ch.webp", 560)
+    img("polywall/result/D2_NP.png", "polywall/d2-np.webp", 560)
+    img("polywall/result/D2_our.png", "polywall/d2-our.webp", 560)
+    img("polywall/result/D3_rviz.png", "polywall/d3-rviz.webp", 560)
+    img("polywall/result/D3_CH.png", "polywall/d3-ch.webp", 560)
+    img("polywall/result/D3_NP.png", "polywall/d3-np.webp", 560)
+    img("polywall/result/D3_our.png", "polywall/d3-our.webp", 560)
     img("polywall/ablation/A_groundtruth.png", "polywall/truth.webp", 760)
     img("sgraphs/runningsgraphs.png", "polywall/sgraphs.webp", 1300)
 

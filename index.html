@@ -18,12 +18,23 @@
 <meta name="theme-color" content="#FAF9F7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#101214" media="(prefers-color-scheme: dark)">
 
-<script>document.documentElement.classList.add("js");</script>
+<script>
+(function () {
+  var d = document.documentElement;
+  d.classList.add("js");
+  var t = null;
+  try { t = localStorage.getItem("theme"); } catch (e) {}
+  if (t !== "dark" && t !== "light") {
+    t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  d.setAttribute("data-theme", t);
+})();
+</script>
 <link rel="icon" href="assets/img/site/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=20261009a">
+<link rel="stylesheet" href="assets/css/site.css?v=20261009j">
 
 <script type="application/ld+json">
 {
@@ -46,21 +57,41 @@
   <div class="wrap site-head__inner">
     <a class="brand" href="#main">
       <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-        <path d="M8 25V15l7-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="8" cy="25" r="2.4" fill="var(--accent)"/>
-        <path d="M15 9l5.5 3.4-3.6 5.6z" fill="var(--accent)"/>
+        <path d="M16 7.6v2.8" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="16" cy="5.4" r="2.4" fill="var(--accent)"/>
+        <rect x="1.4" y="16.1" width="3.8" height="7.8" rx="1.9" fill="var(--accent)"/>
+        <rect x="26.8" y="16.1" width="3.8" height="7.8" rx="1.9" fill="var(--accent)"/>
+        <rect x="4.2" y="9.6" width="23.6" height="19.2" rx="5.6" fill="currentColor"/>
+        <circle cx="11.6" cy="17.4" r="3.2" fill="var(--paper)"/>
+        <circle cx="20.4" cy="17.4" r="3.2" fill="var(--paper)"/>
+        <rect x="12.4" y="23.1" width="7.2" height="2" rx="1" fill="var(--paper)"/>
       </svg>
       <span>Gregorio&nbsp;Orlando</span>
     </a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <div class="site-head__end">
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-    <nav class="nav" id="primary-nav" aria-label="Primary">
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
-    </nav>
+      <button class="theme-toggle" type="button" id="theme-toggle" hidden
+              aria-label="Switch to dark theme" title="Switch to dark theme">
+        <svg class="theme-toggle__icon theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"
+             fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"
+             fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4.4"/>
+          <path d="M12 1.6v2.2M12 20.2v2.2M3.5 12H1.3M22.7 12h-2.2M5.6 5.6 4 4M20 20l-1.6-1.6M18.4 5.6 20 4M4 20l1.6-1.6"/>
+        </svg>
+      </button>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    </div>
   </div>
 </header>
 
@@ -108,7 +139,7 @@
 
           <div class="hero__actions">
             <div class="hero__links">
-              <a class="btn" href="assets/cv/Gregorio-Orlando-CV.pdf">
+              <a class="btn btn--quiet" href="assets/cv/Gregorio-Orlando-CV.pdf">
                 <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v9M4.5 7.5L8 11l3.5-3.5M2.5 13.5h11"/></svg>
                 CV
               </a>
@@ -126,13 +157,14 @@
         <div class="hero__media">
           <figure class="fig">
             <img src="assets/img/aifred/hero.webp" width="1500" height="840" fetchpriority="high" decoding="async"
+                 style="object-position:54% center"
                  alt="A person working at a desk while the AIfred robot arm holds a projector over their work.">
             <figcaption><b><span class="wm">AI</span>fred</b>, a robot arm that puts AI guidance onto the page you are working on.</figcaption>
           </figure>
 
-          <figure class="fig mt-2">
+          <figure class="fig fig--fill mt-2">
             <img src="assets/img/gallery/lab.webp" width="1200" height="1600" loading="lazy" decoding="async"
-                 style="aspect-ratio:3/2;object-fit:cover"
+                 style="object-position: 60% 44%"
                  alt="Robots in the IE Robotics and AI Lab, including a Pepper and a NAO humanoid, with the AIfred paper on screen behind.">
             <figcaption>The lab, most days.</figcaption>
           </figure>
@@ -157,7 +189,6 @@
             <h3 class="proj__title"><span class="wm">AI</span>fred</h3>
             <p class="proj__tag">A robot arm that projects AI help onto your desk</p>
             <ul class="tags">
-              <li><span class="tag tag--accent">First author</span></li>
               <li><span class="tag">ROS Noetic</span></li>
               <li><span class="tag">WidowX 250s</span></li>
               <li><span class="tag">OptiTrack</span></li>
@@ -165,10 +196,15 @@
             </ul>
             <div class="btn-row mt-2">
               <a class="btn btn--primary" href="https://aifred.cyphy.life/" rel="noopener">Project site</a>
-              <a class="btn btn--quiet" href="https://arxiv.org/abs/2609.38737" rel="noopener">Paper</a>
+              <a class="btn btn--quiet" href="https://arxiv.org/abs/2609.38737" rel="noopener">Preprint</a>
               <a class="btn btn--quiet" href="https://www.youtube.com/watch?v=713YKEyMPpI" rel="noopener">Video</a>
               <a class="btn btn--quiet" href="https://github.com/IERoboticsAILab/AIfred" rel="noopener">Code</a>
             </div>
+
+            <figure class="fig fig--pad mt-2">
+              <img src="assets/img/aifred/sketch.webp" width="1300" height="635" loading="lazy" decoding="async"
+                   alt="Illustration of the idea: a person draws at a desk while a robot arm projects guidance onto the paper and a camera on the monitor watches the work.">
+            </figure>
           </div>
           <div>
             <div class="proj__body">
@@ -194,13 +230,16 @@
                 benefits tasks whose guidance shares a spatial frame with the
                 work.
               </p>
+              <p>
+                Submitted to ICRA 2027, under review.
+              </p>
             </div>
           </div>
         </div>
 
         <div class="mgrid">
-          <figure class="fig fig--crop m4" style="--ar: 16 / 9">
-            <img src="assets/img/aifred/setup.webp" width="100" loading="lazy" decoding="async"
+          <figure class="fig m6">
+            <img src="assets/img/aifred/setup.webp" width="1500" height="691" loading="lazy" decoding="async"
                  alt="The AIfred station labelled with its parts: robot arm, mini projector, projection output, OptiTrack cameras, trackable object and USB camera.">
             <figcaption>System overview.</figcaption>
           </figure>
@@ -287,6 +326,7 @@
               <li><span class="tag">Gait planning</span></li>
               <li><span class="tag">IMU control</span></li>
               <li><span class="tag">Isaac Lab / RL</span></li>
+              <li><span class="tag">ROS 2</span></li>
               <li><span class="tag">Fusion 360</span></li>
             </ul>
             <div class="btn-row mt-2">
@@ -369,11 +409,15 @@
               <li><span class="tag">Point clouds</span></li>
               <li><span class="tag">Geometry processing</span></li>
               <li><span class="tag">Unity</span></li>
-              <li><span class="tag">HoloLens 2</span></li>
+              <li><span class="tag">VR Summit</span></li>
             </ul>
             <div class="btn-row mt-2">
               <a class="btn btn--primary" href="https://github.com/snt-arg/polywall" rel="noopener">Plug in</a>
-              <a class="btn btn--quiet" href="https://snt-arg.github.io/lidar_situational_graphs/" rel="noopener">S-Graphs SLAM stack</a>
+              <a class="btn btn--quiet" href="assets/img/polywall/VRSummitPOSTER.pdf" title="The poster presented at VR Summit 2026">
+                <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v9M4.5 7.5L8 11l3.5-3.5M2.5 13.5h11"/></svg>
+                Poster
+              </a>
+              <a class="btn btn--quiet" href="https://snt-arg.github.io/lidar_situational_graphs/" rel="noopener" title="The S-Graphs SLAM stack this plugs into">S-Graphs</a>
             </div>
           </div>
           <div>
@@ -388,46 +432,85 @@
                 step: extract the planar wall structure, discard the rest, hand Unity something it can
                 draw. <strong>4.27 M triangles to 18,094.</strong>
               </p>
+              <p>
+                Presented at the <strong>VR Summit 2026</strong> in Germany, and used in
+                <a href="https://arxiv.org/abs/2509.14949/" rel="noopener">Human Interaction for Collaborative Semantic SLAM using Extended Reality</a>.
             </div>
           </div>
         </div>
 
+        <!-- One environment, three ways: the truth, what the LiDAR gives us, what we hand Unity. -->
         <div class="mgrid">
-          <figure class="fig fig--pad m3">
-            <img src="assets/img/polywall/before.webp" width="859" height="615" loading="lazy" decoding="async"
-                 alt="A dense red LiDAR point cloud of an indoor floor plan, thick with overlapping points.">
-            <figcaption><b>Before</b>: the dense SLAM map, 4,270,000 triangles.</figcaption>
+          <figure class="fig fig--pad fig--fit m2" style="--ar: 4 / 3">
+            <img src="assets/img/polywall/truth.webp" width="760" height="548" loading="lazy" decoding="async"
+                 alt="Grey ground-truth model of the test environment's walls.">
+            <figcaption><b>Ground truth</b>: the environment as it is.</figcaption>
           </figure>
-          <figure class="fig fig--pad m3">
+          <figure class="fig fig--pad fig--fit m2" style="--ar: 4 / 3">
+            <img src="assets/img/polywall/before.webp" width="859" height="615" loading="lazy" decoding="async"
+                 alt="The same floor plan in RViz as a dense red LiDAR point cloud, thick with overlapping points.">
+            <figcaption><b>Raw point cloud</b>: the LiDAR's PCL in RViz, 4,270,000 triangles.</figcaption>
+          </figure>
+          <figure class="fig fig--pad fig--fit m2" style="--ar: 4 / 3">
             <img src="assets/img/polywall/after.webp" width="900" height="624" loading="lazy" decoding="async"
                  alt="The same floor plan rebuilt as a small set of flat coloured polygons, one per wall.">
-            <figcaption><b>After</b>: bounded planes, 18,094 triangles. The room survives; the noise does not.</figcaption>
+            <figcaption><b>Our compression</b>: bounded planes, 18,094 triangles. The room survives; the noise does not.</figcaption>
           </figure>
         </div>
 
         <div class="mgrid">
           <figure class="fig fig--pad m6">
-            <img src="assets/img/polywall/pipeline.webp" width="1800" height="1036" loading="lazy" decoding="async"
-                 alt="Eight-step pipeline diagram showing a room going from ground truth, through point cloud capture, clustering, gap filling, border extension and corner fitting, to a finished polygonal model.">
-            <figcaption>The pipeline: cluster the cloud into planes, fill gaps, extend borders to the floor and ceiling, resolve corners.</figcaption>
+            <img src="assets/img/polywall/pipeline.webp" width="1400" height="374" loading="lazy" decoding="async"
+                 alt="Four-step pipeline: extract and organise wall points, reconstruct walls and fill gaps, align and snap to the architecture, then output clean structured wall geometry.">
+            <figcaption>The pipeline, end to end.</figcaption>
           </figure>
         </div>
 
-        <div class="mgrid">
-          <figure class="fig fig--pad fig--fit m2" style="--ar: 4 / 3">
-            <img src="assets/img/polywall/truth.webp" width="760" height="548" loading="lazy" decoding="async"
-                 alt="Grey ground-truth model of the test environment's walls.">
-            <figcaption>Ground truth.</figcaption>
+        <p class="eyebrow eyebrow--plain mrow-label">Second environment</p>
+        <div class="mgrid mgrid--4">
+          <figure class="fig fig--pad fig--fit" style="--ar: 4 / 3">
+            <img src="assets/img/polywall/d2-rviz.webp" width="560" height="404" loading="lazy" decoding="async"
+                 alt="The second environment as a raw LiDAR point cloud.">
+            <figcaption>Raw point cloud</figcaption>
           </figure>
-          <figure class="fig fig--pad fig--fit m2" style="--ar: 4 / 3">
-            <img src="assets/img/polywall/d2-after.webp" width="720" height="697" loading="lazy" decoding="async"
-                 alt="Polygonal wall reconstruction of a second, more complex building.">
-            <figcaption>A second environment.</figcaption>
+          <figure class="fig fig--pad fig--fit" style="--ar: 4 / 3">
+            <img src="assets/img/polywall/d2-ch.webp" width="560" height="476" loading="lazy" decoding="async"
+                 alt="The second environment reconstructed by the convex hull baseline: bloated, overlapping shells.">
+            <figcaption>Convex hull</figcaption>
           </figure>
-          <figure class="fig fig--pad fig--fit m2" style="--ar: 4 / 3">
-            <img src="assets/img/polywall/d3-after.webp" width="760" height="617" loading="lazy" decoding="async"
-                 alt="Polygonal wall reconstruction of a third environment with long corridors.">
-            <figcaption>A third, with corridors.</figcaption>
+          <figure class="fig fig--pad fig--fit" style="--ar: 4 / 3">
+            <img src="assets/img/polywall/d2-np.webp" width="560" height="442" loading="lazy" decoding="async"
+                 alt="The second environment reconstructed by the nearest point baseline: ragged, holed surfaces.">
+            <figcaption>Nearest point</figcaption>
+          </figure>
+          <figure class="fig fig--pad fig--fit" style="--ar: 4 / 3">
+            <img src="assets/img/polywall/d2-our.webp" width="560" height="542" loading="lazy" decoding="async"
+                 alt="The second environment reconstructed by PolyWall: clean bounded planes, one per wall.">
+            <figcaption>PolyWall (ours)</figcaption>
+          </figure>
+        </div>
+
+        <p class="eyebrow eyebrow--plain mrow-label">Third environment</p>
+        <div class="mgrid mgrid--4">
+          <figure class="fig fig--pad fig--fit" style="--ar: 4 / 3">
+            <img src="assets/img/polywall/d3-rviz.webp" width="560" height="422" loading="lazy" decoding="async"
+                 alt="The third environment as a raw LiDAR point cloud.">
+            <figcaption>Raw point cloud</figcaption>
+          </figure>
+          <figure class="fig fig--pad fig--fit" style="--ar: 4 / 3">
+            <img src="assets/img/polywall/d3-ch.webp" width="560" height="333" loading="lazy" decoding="async"
+                 alt="The third environment reconstructed by the convex hull baseline: bloated, overlapping shells.">
+            <figcaption>Convex hull</figcaption>
+          </figure>
+          <figure class="fig fig--pad fig--fit" style="--ar: 4 / 3">
+            <img src="assets/img/polywall/d3-np.webp" width="560" height="415" loading="lazy" decoding="async"
+                 alt="The third environment reconstructed by the nearest point baseline: ragged, holed surfaces.">
+            <figcaption>Nearest point</figcaption>
+          </figure>
+          <figure class="fig fig--pad fig--fit" style="--ar: 4 / 3">
+            <img src="assets/img/polywall/d3-our.webp" width="560" height="455" loading="lazy" decoding="async"
+                 alt="The third environment reconstructed by PolyWall: clean bounded planes, one per wall.">
+            <figcaption>PolyWall (ours)</figcaption>
           </figure>
         </div>
       </article>
@@ -490,9 +573,9 @@
             <figcaption>Every gram contested.</figcaption>
           </figure>
           <figure class="fig fig--crop m2" style="--ar: 1 / 1">
-            <img src="assets/img/minotauro/flames.webp" width="800" height="1067" loading="lazy" decoding="async"
+            <img src="assets/img/minotauro/win.jpeg" width="800" height="1067" loading="lazy" decoding="async"
                  alt="Hand-painted flame decals on the robot's clear polycarbonate ramp.">
-            <figcaption>Flames, for aerodynamics.</figcaption>
+            <figcaption>First win.</figcaption>
           </figure>
           <figure class="fig fig--crop m2" style="--ar: 1 / 1">
             <img src="assets/img/minotauro/team.webp" width="1000" height="1333" loading="lazy" decoding="async"
@@ -514,6 +597,18 @@
       <div class="grid cols-3 reveal">
         <article class="card">
           <figure class="fig" style="margin-bottom:1.1rem">
+            <img src="assets/img/other/car.webp" width="800" height="1422" loading="lazy" decoding="async"
+                 style="aspect-ratio:4/3;object-fit:cover"
+                 alt="The Formula Student car in the team garage.">
+          </figure>
+          <p class="card__kicker">Formula Student · UC3M · 2024</p>
+          <h3 class="card__title">Telemetry recorder</h3>
+          <p class="card__text">A ROS 2 package in C++ that captured every message on the car into both a ROS bag and a spreadsheet, so the team could analyse a run instead of recalling it.</p>
+          <ul class="tags"><li><span class="tag">ROS 2</span></li><li><span class="tag">C++</span></li></ul>
+        </article>
+
+        <article class="card">
+          <figure class="fig" style="margin-bottom:1.1rem">
             <div class="clipwrap" style="--ar: 4 / 3">
               <video width="560" height="990" poster="assets/img/other/wallfollower-poster.webp"
                      muted loop playsinline preload="none" controls
@@ -531,18 +626,14 @@
 
         <article class="card">
           <figure class="fig" style="margin-bottom:1.1rem">
-            <div class="clipwrap" style="--ar: 4 / 3">
-              <video width="560" height="990" poster="assets/img/other/autobin-poster.webp"
-                     muted loop playsinline preload="none" controls
-                     aria-label="A bin lid opening automatically as a hand approaches.">
-                <source src="assets/img/other/autobin.mp4" type="video/mp4">
-              </video>
-            </div>
+            <img src="assets/img/other/2048.webp" width="1100" height="613" loading="lazy" decoding="async"
+                 style="aspect-ratio:4/3;object-fit:cover"
+                 alt="Presentation slide explaining the move and quicksort algorithms behind the 2048 implementation.">
           </figure>
           <p class="card__kicker">Side project</p>
-          <h3 class="card__title">Automatic bin</h3>
-          <p class="card__text">Senses approaching hands with trash and opens itself. A sensor, an actuator and a state machine. My first robot!</p>
-          <div class="card__foot"><a class="arrow-link" href="https://github.com/GRINGOLOCO7/InteligentBin" rel="noopener">GitHub
+          <h3 class="card__title">2048, as an algorithms problem</h3>
+          <p class="card__text">Built to study the move logic, data structures and sorting behind the game rather than the game itself.</p>
+          <div class="card__foot"><a class="arrow-link" href="https://github.com/GRINGOLOCO7/2048Game" rel="noopener">GitHub
             <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
         </article>
 
@@ -565,19 +656,6 @@
 
         <article class="card">
           <figure class="fig" style="margin-bottom:1.1rem">
-            <img src="assets/img/other/2048.webp" width="1100" height="613" loading="lazy" decoding="async"
-                 style="aspect-ratio:4/3;object-fit:cover"
-                 alt="Presentation slide explaining the move and quicksort algorithms behind the 2048 implementation.">
-          </figure>
-          <p class="card__kicker">Side project</p>
-          <h3 class="card__title">2048, as an algorithms problem</h3>
-          <p class="card__text">Built to study the move logic, data structures and sorting behind the game rather than the game itself.</p>
-          <div class="card__foot"><a class="arrow-link" href="https://github.com/GRINGOLOCO7/2048Game" rel="noopener">GitHub
-            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
-        </article>
-
-        <article class="card">
-          <figure class="fig" style="margin-bottom:1.1rem">
             <img src="assets/img/other/neo.webp" width="1100" height="616" loading="lazy" decoding="async"
                  style="aspect-ratio:4/3;object-fit:cover"
                  alt="The Near-Earth Object Analyzer interface, listing asteroids returned from NASA's database for a chosen date range.">
@@ -591,14 +669,19 @@
 
         <article class="card">
           <figure class="fig" style="margin-bottom:1.1rem">
-            <img src="assets/img/other/car.webp" width="800" height="1422" loading="lazy" decoding="async"
-                 style="aspect-ratio:4/3;object-fit:cover"
-                 alt="The Formula Student car in the team garage.">
+            <div class="clipwrap" style="--ar: 4 / 3">
+              <video width="560" height="990" poster="assets/img/other/autobin-poster.webp"
+                     muted loop playsinline preload="none" controls
+                     aria-label="A bin lid opening automatically as a hand approaches.">
+                <source src="assets/img/other/autobin.mp4" type="video/mp4">
+              </video>
+            </div>
           </figure>
-          <p class="card__kicker">Formula Student · UC3M · 2024</p>
-          <h3 class="card__title">Telemetry recorder</h3>
-          <p class="card__text">A ROS 2 package in C++ that captured every message on the car into both a ROS bag and a spreadsheet, so the team could analyse a run instead of recalling it.</p>
-          <ul class="tags"><li><span class="tag">ROS 2</span></li><li><span class="tag">C++</span></li></ul>
+          <p class="card__kicker">Side project</p>
+          <h3 class="card__title">Automatic bin</h3>
+          <p class="card__text">Senses approaching hands with trash and opens itself. A sensor, an actuator and a state machine. My first robot!</p>
+          <div class="card__foot"><a class="arrow-link" href="https://github.com/GRINGOLOCO7/InteligentBin" rel="noopener">GitHub
+            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
         </article>
       </div>
     </div>
@@ -845,6 +928,6 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js?v=20261009a" defer></script>
+<script src="assets/js/site.js?v=20261009j" defer></script>
 </body>
 </html>

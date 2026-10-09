@@ -216,7 +216,7 @@ section[id], footer[id] { scroll-margin-top: 86px; }
   display: inline-flex; align-items: center; gap: 0.6rem;
   white-space: nowrap;
 }
-.brand__mark { width: 18px; height: 18px; flex: none; }
+.brand__mark { width: 22px; height: 22px; flex: none; }
 .brand__sub { color: var(--ink-3); font-weight: 400; }
 @media (max-width: 560px) { .brand__sub { display: none; } }
 
@@ -238,6 +238,28 @@ section[id], footer[id] { scroll-margin-top: 86px; }
 .nav a:hover, .nav a[aria-current="true"] { color: var(--ink); }
 .nav a:hover::after, .nav a[aria-current="true"]::after { transform: scaleX(1); }
 
+.site-head__end {
+  display: flex; align-items: center;
+  gap: clamp(1rem, 2.2vw, 2rem);
+}
+
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; flex: none;
+  background: none; border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  color: var(--ink-2);
+  cursor: pointer; padding: 0;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+.theme-toggle[hidden] { display: none; }  /* an author display rule outranks [hidden] */
+.theme-toggle:hover { color: var(--ink); border-color: var(--ink-3); }
+.theme-toggle__icon { width: 17px; height: 17px; }
+/* Show the theme being offered, not the one in use. */
+.theme-toggle__sun { display: none; }
+:root[data-theme="dark"] .theme-toggle__moon { display: none; }
+:root[data-theme="dark"] .theme-toggle__sun { display: block; }
+
 .nav-toggle {
   display: none;
   background: none; border: 1px solid var(--rule);
@@ -248,6 +270,7 @@ section[id], footer[id] { scroll-margin-top: 86px; }
   padding: 0.5rem 0.75rem; cursor: pointer;
 }
 @media (max-width: 880px) {
+  .site-head__end { gap: 0.6rem; }
   .nav-toggle { display: inline-block; }
   .nav {
     position: fixed; inset: 64px 0 auto 0;
@@ -299,6 +322,12 @@ section[id], footer[id] { scroll-margin-top: 86px; }
 /* ---------- 7. Hero ---------- */
 .hero { padding-block: clamp(3rem, 7vw, 6rem) clamp(2.5rem, 5vw, 4rem); }
 .hero__grid { display: grid; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
+/* The lab photo is a tall portrait; crop it to a landscape band. */
+.hero__media .fig.fig--fill > img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center 32%;
+}
 @media (min-width: 1000px) {
   .hero__grid {
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
@@ -306,6 +335,18 @@ section[id], footer[id] { scroll-margin-top: 86px; }
     align-items: stretch;
   }
   .hero__media .fig > img { aspect-ratio: 4 / 5; object-fit: cover; }
+
+  /* Beside the text column the media column is stretched to the row height,
+     so let the lab photo swallow whatever height is left over. Its caption
+     then lands on the same baseline as the button opposite it. */
+  .hero__media { display: flex; flex-direction: column; }
+  .hero__media > .fig { flex: none; }
+  .hero__media > .fig--fill { flex: 1 1 auto; min-height: 0; }
+  /* The 3/2 ratio above stays as the starting height: it is what the column
+     contributes to the row, and flex-grow then stretches past it. Releasing it
+     to auto would make the image offer its intrinsic 1200x1600 height instead,
+     which inflates the row and leaves nothing over to grow into. */
+  .hero__media > .fig.fig--fill > img { flex: 1 1 auto; min-height: 0; }
 }
 .hero h1 {
   font-family: var(--font-display);
@@ -449,9 +490,24 @@ section[id], footer[id] { scroll-margin-top: 86px; }
 .m3 { grid-column: span 3; }
 .m4 { grid-column: span 4; }
 .m6 { grid-column: span 6; }
+/* Four-up: method comparisons, where six columns will not divide evenly. */
+.mgrid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.mgrid--4 > .fig figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+.mrow-label { margin: 0 0 0.6rem; }
+.mgrid + .mrow-label { margin-top: clamp(1.2rem, 2.6vw, 1.9rem); }
+
 @media (max-width: 900px) {
   .m2 { grid-column: span 3; }
   .m4 { grid-column: span 6; }
+}
+@media (max-width: 560px) {
+  .mgrid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 620px) {
   .m2, .m3, .m4 { grid-column: span 6; }
@@ -626,9 +682,7 @@ a.card:hover { border-color: var(--ink); transform: translateY(-2px); }
 .gallery .fig > img {
   aspect-ratio: var(--ar, 3 / 4);
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(.2,.7,.3,1);
 }
-.gallery .fig:hover > img { transform: scale(1.035); }
 .gallery .fig figcaption {
   margin: 0.55rem 0 0; padding: 0; border: 0;
   font-family: var(--font-mono); font-size: 0.64rem;
@@ -774,8 +828,6 @@ textarea.field__i { resize: vertical; min-height: 6.5rem; display: block; }
 .js .reveal.is-in { opacity: 1; transform: none; transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.2,.7,.3,1); }
 @media (prefers-reduced-motion: reduce) {
   .js .reveal, .js .reveal.is-in { opacity: 1; transform: none; transition: none; }
-  .gallery .fig:hover .fig__slot,
-  .gallery .fig:hover .fig__slot img,
   a.card:hover { transform: none; }
   /* !important is required here: the universal selector has zero specificity and
      would otherwise lose to every component rule that sets a transition. */

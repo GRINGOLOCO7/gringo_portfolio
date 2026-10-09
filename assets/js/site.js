@@ -42,7 +42,71 @@
     setOpen(false);
   }
 
-  /* ---------- 2. Clips -----------------------------------------
+  /* ---------- 2. Theme -----------------------------------------
+     The inline script in <head> already resolved a theme onto
+     <html data-theme> before first paint, so there is no flash.
+     This wires the button and remembers an explicit choice; with
+     no stored choice we keep following the operating system.
+     ------------------------------------------------------------ */
+  function initTheme() {
+    var button = document.getElementById("theme-toggle");
+    if (!button) return;
+
+    var root = document.documentElement;
+    var system = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function stored() {
+      try {
+        var t = localStorage.getItem("theme");
+        return t === "dark" || t === "light" ? t : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    // The two <meta name="theme-color"> tags are media-scoped for the
+    // no-JS case. Once a visitor picks a theme, force the right one.
+    var metas = document.querySelectorAll('meta[name="theme-color"]');
+    Array.prototype.forEach.call(metas, function (m) {
+      m.setAttribute("data-media", m.getAttribute("media") || "");
+    });
+
+    function paintMeta(theme, explicit) {
+      Array.prototype.forEach.call(metas, function (m) {
+        var own = m.getAttribute("data-media");
+        if (!explicit) {
+          m.setAttribute("media", own);
+          return;
+        }
+        m.setAttribute("media", own.indexOf(theme) !== -1 ? "all" : "not all");
+      });
+    }
+
+    function apply(theme, explicit) {
+      root.setAttribute("data-theme", theme);
+      var next = theme === "dark" ? "light" : "dark";
+      var label = "Switch to " + next + " theme";
+      button.setAttribute("aria-label", label);
+      button.setAttribute("title", label);
+      paintMeta(theme, explicit);
+    }
+
+    apply(stored() || (system.matches ? "dark" : "light"), stored() !== null);
+    button.hidden = false;
+
+    button.addEventListener("click", function () {
+      var theme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      try { localStorage.setItem("theme", theme); } catch (e) {}
+      apply(theme, true);
+    });
+
+    system.addEventListener("change", function (e) {
+      if (stored()) return; // an explicit choice wins over the system
+      apply(e.matches ? "dark" : "light", false);
+    });
+  }
+
+  /* ---------- 3. Clips -----------------------------------------
      Markup ships each clip paused, with a poster and controls, so
      it works with no JavaScript at all. When motion is welcome we
      take the controls away and loop it silently, playing only
@@ -162,7 +226,7 @@
   }
 
 
-  /* ---------- 3. Scroll reveal ---------- */
+  /* ---------- 4. Scroll reveal ---------- */
   function initReveal() {
     var items = document.querySelectorAll(".reveal");
     if (!items.length) return;
@@ -183,7 +247,7 @@
     Array.prototype.forEach.call(items, function (el) { io.observe(el); });
   }
 
-  /* ---------- 4. Current section in the nav ---------- */
+  /* ---------- 5. Current section in the nav ---------- */
   function initScrollSpy() {
     var links = document.querySelectorAll('#primary-nav a[href^="#"]');
     if (!links.length || !("IntersectionObserver" in window)) return;
@@ -212,7 +276,7 @@
     targets.forEach(function (t) { spy.observe(t); });
   }
 
-  /* ---------- 5. Footer year ---------- */
+  /* ---------- 6. Footer year ---------- */
   function initYear() {
     var el = document.querySelector("[data-year]");
     if (el) el.textContent = String(new Date().getFullYear());
@@ -220,6 +284,7 @@
 
   function init() {
     initNav();
+    initTheme();
     initContactForm();
     initClips();
     initReveal();

@@ -1,9 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Gregorio Orlando">
   <rect width="32" height="32" rx="6" fill="#15171B"/>
-  <!-- Schematic 2-link arm projecting onto a surface -->
-  <path d="M8 25V15l7-6" fill="none" stroke="#FAF9F7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="8" cy="25" r="2.4" fill="#B93A1B"/>
-  <circle cx="8" cy="15" r="1.7" fill="#FAF9F7"/>
-  <path d="M15 9l5.5 3.4-3.6 5.6z" fill="#B93A1B"/>
-  <path d="M21 24.5h4" stroke="#FAF9F7" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+  <!-- Robot head, front on: antenna, ears, two eyes, mouth -->
+  <path d="M16 7.6v2.8" stroke="#E8743F" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="16" cy="5.4" r="2.4" fill="#E8743F"/>
+  <rect x="1.4" y="16.1" width="3.8" height="7.8" rx="1.9" fill="#E8743F"/>
+  <rect x="26.8" y="16.1" width="3.8" height="7.8" rx="1.9" fill="#E8743F"/>
+  <rect x="4.2" y="9.6" width="23.6" height="19.2" rx="5.6" fill="#FAF9F7"/>
+  <circle cx="11.6" cy="17.4" r="3.2" fill="#15171B"/>
+  <circle cx="20.4" cy="17.4" r="3.2" fill="#15171B"/>
+  <rect x="12.4" y="23.1" width="7.2" height="2" rx="1" fill="#15171B"/>
 </svg>
