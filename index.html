@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gregorio Orlando — Robotics Researcher &amp; Engineer</title>
+<title>Gregorio Orlando - Robotics Researcher &amp; Engineer</title>
 <meta name="description" content="Robotics researcher at IE University, Madrid. AIfred, a projector-carrying robot arm (ICRA 2027, under review); Botzo, an open-source quadruped; and lightweight SLAM maps for real-time XR.">
 <meta name="author" content="Gregorio Orlando">
 <link rel="canonical" href="https://gringoloco7.github.io/gringo_portfolio/">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Gregorio Orlando Robotics Researcher &amp; Engineer">
-<meta property="og:description" content="Manipulators, perception and AI built into one machine — then tested with real users.">
+<meta property="og:description" content="Manipulators, perception and AI built into one machine, then tested with real users.">
 <meta property="og:image" content="https://gringoloco7.github.io/gringo_portfolio/assets/img/aifred/hero.webp">
 <meta property="og:url" content="https://gringoloco7.github.io/gringo_portfolio/">
 <meta property="og:locale" content="en_GB">
@@ -82,7 +82,7 @@
           <p class="hero__intro">
             I grew up in Milan taking things apart. I am finishing a <strong>BSc in Computer Science
             and Artificial Intelligence at IE University</strong> in Madrid, and have worked in the
-            university's <strong>Robotics and AI Lab since August 2023</strong> — where I also keep
+            university's <strong>Robotics and AI Lab since August 2023</strong>, where I also keep
             the 3D printers alive.
           </p>
 
@@ -100,7 +100,7 @@
               disabilities.
             </p>
             <p class="muted small">
-              Next: a master's in robotics or computer science — deeper into perception, state
+              Next: a master's in robotics or computer science, deeper into perception, state
               estimation and robot learning. Italian (native) · English (fluent) · Spanish and French
               (intermediate).
             </p>
@@ -127,7 +127,7 @@
           <figure class="fig">
             <img src="assets/img/aifred/hero.webp" width="1500" height="840" fetchpriority="high" decoding="async"
                  alt="A person working at a desk while the AIfred robot arm holds a projector over their work.">
-            <figcaption><b><span class="wm">AI</span>fred</b> — a robot arm that puts AI guidance onto the page you are working on.</figcaption>
+            <figcaption><b><span class="wm">AI</span>fred</b>, a robot arm that puts AI guidance onto the page you are working on.</figcaption>
           </figure>
 
           <figure class="fig mt-2">
@@ -156,21 +156,6 @@
             <p class="proj__num"><b>01</b> CyPhy Life · 2025 - present</p>
             <h3 class="proj__title"><span class="wm">AI</span>fred</h3>
             <p class="proj__tag">A robot arm that projects AI help onto your desk</p>
-          </div>
-          <div>
-            <div class="proj__body">
-              <p>
-                Ask an AI about something you are doing on paper and the answer appears on a laptop —
-                a different place from the work. AIfred closes that gap. An overhead camera sees what you
-                point at, a multimodal model writes the guidance, and a projector on the arm's end-effector
-                lays it on the page beside your handwriting.
-              </p>
-              <p>
-                I built the system and ran the 36-person study. While help was available the two conditions
-                were <strong>indistinguishable</strong>. The difference only appeared after the help was
-                taken away.
-              </p>
-            </div>
             <ul class="tags">
               <li><span class="tag tag--accent">First author</span></li>
               <li><span class="tag">ROS Noetic</span></li>
@@ -185,18 +170,39 @@
               <a class="btn btn--quiet" href="https://github.com/IERoboticsAILab/AIfred" rel="noopener">Code</a>
             </div>
           </div>
+          <div>
+            <div class="proj__body">
+              <p>
+                Abstract— Desk-based learning and creative activities benefit
+                from handwritten engagement. However, current generative AI
+                tools deliver guidance through a separate screen, creating a
+                gap between where users think and where assistance appears.
+                To address this, in this work we design AIfred, a desk-based
+                robotic arm with a projector mounted at the end-effector
+                that places AI-generated guidance alongside handwritten work.
+                AIfred combines workspace perception, context-aware content
+                generation, and robot-mediated projection to support math-
+                assignments, image-generation, and drawing tasks. In a user
+                study (n = 36), we compared AIfred against ChatGPT (GPT-5.6
+                Luna) running on a laptop. Both tools performed comparably
+                while assistance was available during math assignment (6.7
+                vs. 7.3/10, p = .41), but AIfred improved short-term learning
+                transfer by 60% once assistance was withdrawn (7.0 vs. 4.4/10,
+                p = .003). In addition, independent art and design professors
+                ranked drawings produced with AIfred better in 33 of 36 cases.
+                Our findings indicate that spatially co-located AI assistance
+                benefits tasks whose guidance shares a spatial frame with the
+                work.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div class="mgrid">
           <figure class="fig fig--crop m4" style="--ar: 16 / 9">
-            <img src="assets/img/aifred/setup.webp" width="1500" height="691" loading="lazy" decoding="async"
+            <img src="assets/img/aifred/setup.webp" width="100" loading="lazy" decoding="async"
                  alt="The AIfred station labelled with its parts: robot arm, mini projector, projection output, OptiTrack cameras, trackable object and USB camera.">
-            <figcaption>The whole system. The projection is the only display — there is no screen for the user.</figcaption>
-          </figure>
-          <figure class="fig fig--crop m2" style="--ar: 8 / 9">
-            <img src="assets/img/aifred/arm.webp" width="820" height="942" loading="lazy" decoding="async"
-                 alt="Close-up of the WidowX 250s arm with the mini projector mounted on its end-effector.">
-            <figcaption>The projector rides on the end-effector — and sets the mass budget for everything else.</figcaption>
+            <figcaption>System overview.</figcaption>
           </figure>
         </div>
 
@@ -204,7 +210,7 @@
           <figure class="fig fig--pad m6">
             <img src="assets/img/aifred/modes.webp" width="1800" height="1222" loading="lazy" decoding="async"
                  alt="Nine-panel figure: for maths homework, image generation and drawing, it shows the user's interaction, the robot's projection, and the resulting work.">
-            <figcaption>Three modes, three phases each: what the user does, what the robot projects, what comes out. Guidance is scaffolded — the system never simply hands over the answer.</figcaption>
+            <figcaption>Three modes, three phases each: what the user does, what the robot projects, what comes out.</figcaption>
           </figure>
         </div>
 
@@ -217,7 +223,7 @@
                 <source src="assets/img/aifred/demo-math.mp4" type="video/mp4">
               </video>
             </div>
-            <figcaption>Maths — the method, projected, not the answer.</figcaption>
+            <figcaption>Solving Math: the method, projected, not the answer.</figcaption>
           </figure>
           <figure class="fig m2">
             <div class="clipwrap">
@@ -227,7 +233,7 @@
                 <source src="assets/img/aifred/demo-draw.mp4" type="video/mp4">
               </video>
             </div>
-            <figcaption>Drawing — construction lines on the page; every mark still the user's.</figcaption>
+            <figcaption>Drawing: construction lines on the page; every mark still the user's.</figcaption>
           </figure>
           <figure class="fig m2">
             <div class="clipwrap">
@@ -237,7 +243,7 @@
                 <source src="assets/img/aifred/demo-generate.mp4" type="video/mp4">
               </video>
             </div>
-            <figcaption>Generation — a pencil sketch comes back rendered.</figcaption>
+            <figcaption>Image Generation: a pencil sketch comes back rendered.</figcaption>
           </figure>
         </div>
 
@@ -263,9 +269,9 @@
             <span class="metric__note">of 5 · p &lt; .001</span>
           </div>
         </div>
-        <p class="small muted mt-1" style="max-width:68ch;">
-          The study compares two whole systems, not single design features — embodiment, projection and
-          the style of the guidance all differ at once. Separating them is the next experiment.
+        <p class="small muted mt-1">
+          The study compares two whole systems, not single design features. Embodiment, projection and
+          the style of the guidance.
         </p>
       </article>
 
@@ -276,20 +282,6 @@
             <p class="proj__num"><b>02</b> CyPhy Life · 2023 - present</p>
             <h3 class="proj__title">Botzo</h3>
             <p class="proj__tag">An open-source robot dog, rebuildable for under €500</p>
-          </div>
-          <div>
-            <div class="proj__body">
-              <p>
-                Quadrupeds are easy with harmonic drives and torque sensing, and hard with hobby servos.
-                Botzo is the hard version, on purpose: printed parts, 25 kg·cm servos and a Raspberry Pi,
-                documented so other people can rebuild it.
-              </p>
-              <p>
-                I work on locomotion — low-inertia leg geometry, closed-form inverse kinematics, gait
-                planning, and the IMU loop that holds the body level mid-stride. The current work replaces
-                that hand-tuned gait with a policy trained in <strong>NVIDIA Isaac Lab</strong>.
-              </p>
-            </div>
             <ul class="tags">
               <li><span class="tag">Inverse kinematics</span></li>
               <li><span class="tag">Gait planning</span></li>
@@ -300,6 +292,20 @@
             <div class="btn-row mt-2">
               <a class="btn btn--primary" href="https://ieroboticsailab.github.io/botzo/" rel="noopener">Documentation</a>
               <a class="btn btn--quiet" href="https://github.com/IERoboticsAILab/botzo" rel="noopener">GitHub</a>
+            </div>
+          </div>
+          <div>
+            <div class="proj__body">
+              <p>
+                Quadrupeds are easy with harmonic drives and torque sensing, and hard with hobby servos.
+                Botzo is the hard version, on purpose: printed parts, 25 kg servos and a Raspberry Pi,
+                documented so other people can rebuild it. Our community is already doing so, and the <strong>Botzo</strong> repo has been forked 4 times, and starred 13 times.
+              </p>
+              <p>
+                Low-inertia leg geometry, closed-form inverse kinematics, gait
+                planning, and ROS 2 Jazzy orchestration. The current work replaces
+                that hand-tuned gait with a policy trained in <strong>NVIDIA Isaac Lab</strong>.
+              </p>
             </div>
           </div>
         </div>
@@ -323,10 +329,15 @@
         </div>
 
         <div class="mgrid">
-          <figure class="fig fig--pad fig--fit m2" style="--ar: 4 / 3">
-            <img src="assets/img/botzo/joints.webp" width="928" height="622" loading="lazy" decoding="async"
-                 alt="Diagram of Botzo labelling the base, shoulder joint, femur, femur joint, tibia and tibia joint.">
-            <figcaption>Three actuated joints per leg.</figcaption>
+          <figure class="fig m2">
+            <div class="clipwrap" style="--ar: 4 / 3">
+              <video width="1000" height="562" poster="assets/img/botzo/cad-poster.webp"
+                     muted loop playsinline preload="none" controls
+                     aria-label="Animated CAD assembly of Botzo, each printed part and servo dropping into place.">
+                <source src="assets/img/botzo/cad.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption>Designed from scratch in CAD. The whole assembly, part by part.</figcaption>
           </figure>
           <figure class="fig fig--pad fig--fit m2" style="--ar: 4 / 3">
             <img src="assets/img/botzo/ik.webp" width="1500" height="748" loading="lazy" decoding="async"
@@ -353,20 +364,6 @@
             <p class="proj__num"><b>03</b> University of Luxembourg, SnT · Jul - Dec 2025</p>
             <h3 class="proj__title">PolyWall</h3>
             <p class="proj__tag">Turning SLAM maps into geometry a headset can afford</p>
-          </div>
-          <div>
-            <div class="proj__body">
-              <p>
-                A LiDAR SLAM map is millions of triangles: ideal for a robot, hostile to a HoloLens that
-                must also render an application at frame rate. Most of that detail is irrelevant — if the
-                XR scene only needs to know where the walls are, surface roughness is pure cost.
-              </p>
-              <p>
-                Six months at the <strong>SnT Automation &amp; Robotics Group</strong>, on the conversion
-                step: extract the planar wall structure, discard the rest, hand Unity something it can
-                draw. <strong>4.27 M triangles to 18,094.</strong>
-              </p>
-            </div>
             <ul class="tags">
               <li><span class="tag">SLAM</span></li>
               <li><span class="tag">Point clouds</span></li>
@@ -379,18 +376,32 @@
               <a class="btn btn--quiet" href="https://snt-arg.github.io/lidar_situational_graphs/" rel="noopener">S-Graphs SLAM stack</a>
             </div>
           </div>
+          <div>
+            <div class="proj__body">
+              <p>
+                A LiDAR SLAM map is millions of triangles: ideal for a robot, hostile to a HoloLens that
+                must also render an application at frame rate. Most of that detail is irrelevant, if the
+                XR scene only needs to know where the walls are, surface roughness is pure cost.
+              </p>
+              <p>
+                Six months at the <strong>SnT Automation &amp; Robotics Group</strong>, on the conversion
+                step: extract the planar wall structure, discard the rest, hand Unity something it can
+                draw. <strong>4.27 M triangles to 18,094.</strong>
+              </p>
+            </div>
+          </div>
         </div>
 
         <div class="mgrid">
           <figure class="fig fig--pad m3">
             <img src="assets/img/polywall/before.webp" width="859" height="615" loading="lazy" decoding="async"
                  alt="A dense red LiDAR point cloud of an indoor floor plan, thick with overlapping points.">
-            <figcaption><b>Before</b> — the dense SLAM map, 4,270,000 triangles.</figcaption>
+            <figcaption><b>Before</b>: the dense SLAM map, 4,270,000 triangles.</figcaption>
           </figure>
           <figure class="fig fig--pad m3">
             <img src="assets/img/polywall/after.webp" width="900" height="624" loading="lazy" decoding="async"
                  alt="The same floor plan rebuilt as a small set of flat coloured polygons, one per wall.">
-            <figcaption><b>After</b> — bounded planes, 18,094 triangles. The room survives; the noise does not.</figcaption>
+            <figcaption><b>After</b>: bounded planes, 18,094 triangles. The room survives; the noise does not.</figcaption>
           </figure>
         </div>
 
@@ -428,6 +439,16 @@
             <p class="proj__num"><b>04</b> IE Robotics Club · OSHWDem, A Coruña 2023</p>
             <h3 class="proj__title">Minotauro</h3>
             <p class="proj__tag">A 454-gram combat robot, and an education in what breaks</p>
+            <ul class="tags">
+              <li><span class="tag">ESP32</span></li>
+              <li><span class="tag">C++</span></li>
+              <li><span class="tag">Motor drivers</span></li>
+              <li><span class="tag">Power electronics</span></li>
+              <li><span class="tag">Teamwork</span></li>
+            </ul>
+            <div class="btn-row mt-2">
+              <a class="btn btn--primary" href="https://github.com/IERoboticsClub/minotauro" rel="noopener">GitHub</a>
+            </div>
           </div>
           <div>
             <div class="proj__body">
@@ -440,16 +461,6 @@
                 Fourth of eleven on the team's first attempt, out in the semi-final when the chassis cracked.
                 Plastic wheels shattered, the motors could not out-push anyone.
               </p>
-            </div>
-            <ul class="tags">
-              <li><span class="tag">ESP32</span></li>
-              <li><span class="tag">C++</span></li>
-              <li><span class="tag">Motor drivers</span></li>
-              <li><span class="tag">Power electronics</span></li>
-              <li><span class="tag">Teamwork</span></li>
-            </ul>
-            <div class="btn-row mt-2">
-              <a class="btn btn--primary" href="https://github.com/IERoboticsClub/minotauro" rel="noopener">GitHub</a>
             </div>
           </div>
         </div>
@@ -603,40 +614,40 @@
 
       <div class="timeline reveal">
         <article class="tl-item">
-          <p class="tl-date"><b>Aug 2023 — present</b>Madrid, Spain</p>
+          <p class="tl-date"><b>Aug 2023 - present</b>Madrid, Spain</p>
           <div>
-            <h3 class="tl-role">Developer &amp; Lab Researcher</h3>
-            <p class="tl-org"><a href="https://cyphy.life/" rel="noopener">IE Robotics and AI Lab</a> — IE University</p>
+            <h3 class="tl-role">Research Assistant</h3>
+            <p class="tl-org">CyPhy Life, IE Robotics and AI Lab</p>
             <div class="tl-body">
               <ul>
                 <li>Built <strong>AIfred</strong> and ran its 36-participant study; first author on the ICRA 2027 submission.</li>
-                <li>Co-develop <strong>Botzo</strong>: inverse kinematics, gait planning, leg design, IMU stabilisation, and now RL locomotion in Isaac Lab.</li>
-                <li>Lab 3D-printing lead; ongoing ROS 1 work across the lab's other systems.</li>
+                <li>Co-develop <strong>Botzo</strong>: inverse kinematics, gait planning, leg &amp; body design, IMU stabilisation, ROS integration, and now RL locomotion in Isaac Lab.</li>
+                <li>Lab 3D printing lead; ongoing ROS 1 work across the lab's other systems.</li>
               </ul>
             </div>
           </div>
         </article>
 
         <article class="tl-item">
-          <p class="tl-date"><b>Jul — Dec 2025</b>Luxembourg</p>
+          <p class="tl-date"><b>Jul - Dec 2025</b>Luxembourg</p>
           <div>
-            <h3 class="tl-role">Developer &amp; Lab Researcher</h3>
-            <p class="tl-org">University of Luxembourg — SnT, Automation &amp; Robotics Group</p>
+            <h3 class="tl-role">Research Assistant</h3>
+            <p class="tl-org">University of Luxembourg, SnT, Automation &amp; Robotics Group</p>
             <div class="tl-body">
               <ul>
-                <li>Contributed to a PhD project on mixed reality and human–robot interaction, connecting SLAM output to Unity.</li>
-                <li>Built <strong>PolyWall</strong>: dense LiDAR SLAM maps into lightweight polygonal walls for HoloLens 2.</li>
-                <li>Research poster: <em>From Point Clouds to Polygonal Walls</em>.</li>
+                <li>Contributed to a PhD project on mixed reality and human-robot interaction, connecting SLAM output to Unity.</li>
+                <li>Built <strong>PolyWall</strong>: dense LiDAR SLAM maps into lightweight polygonal walls.</li>
+                <li>Research poster: <em>From Point Clouds to Polygonal Walls</em> published to VR Summit 2026.</li>
               </ul>
             </div>
           </div>
         </article>
 
         <article class="tl-item">
-          <p class="tl-date"><b>Jan — May 2024</b>Madrid, Spain</p>
+          <p class="tl-date"><b>Jan - May 2024</b>Madrid, Spain</p>
           <div>
             <h3 class="tl-role">Software Team Member</h3>
-            <p class="tl-org">Formula Student — UC3M Team</p>
+            <p class="tl-org">Formula Student, UC3M Team</p>
             <div class="tl-body">
               <p>A ROS 2 package in C++ recording every message on the car to a ROS bag and spreadsheet, for post-run performance analysis.</p>
             </div>
@@ -648,14 +659,14 @@
         <div>
           <h3 class="eyebrow">Education</h3>
           <dl class="keyvals">
-            <div><dt>2022 — Jul 2026</dt><dd><strong>BSc Computer Science &amp; Artificial Intelligence</strong>, IE University — GPA 8.56/10</dd></div>
+            <div><dt>2022 - 2026</dt><dd><strong>BSc Computer Science &amp; Artificial Intelligence</strong>, IE University (GPA 8.56/10)</dd></div>
             <div><dt>Coursework</dt><dd>Algorithms &amp; Data Structures · AI &amp; Machine Learning · Reinforcement Learning · Computer Vision · Introduction to Robotics · Linear Transformations · HPC · C++</dd></div>
           </dl>
         </div>
         <div>
           <h3 class="eyebrow">Also trained in</h3>
           <dl class="keyvals">
-            <div><dt>ROS</dt><dd>“ROS 2 Basics in Python” and “RL in ROS” — The Construct</dd></div>
+            <div><dt>ROS</dt><dd>“ROS 2 Basics in Python” and “RL in ROS” (The Construct)</dd></div>
             <div><dt>Motion capture</dt><dd>OptiTrack training with Target 3D specialists (2024)</dd></div>
             <div><dt>ML</dt><dd>Coursera AI course with Andrew Ng (2020)</dd></div>
           </dl>

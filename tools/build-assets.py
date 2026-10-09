@@ -140,6 +140,7 @@ def main():
     img("botzo/IK_trigonometrics_drawing_side.png", "botzo/ik.webp", 1500)
     img("botzo/legs_view.png", "botzo/legs.webp", 1300)
     img("botzo/basic_circuit_scketch.png", "botzo/circuit.webp", 1200)
+    vid("botzo/cad.gif", "botzo/cad.mp4", 1000, crf=31, fps=20)
     vid("botzo/isaaclab.gif", "botzo/isaac.mp4", 1200, crf=33)
     vid("botzo/digital_twin_botzo_urdf.gif", "botzo/twin.mp4", 800, crf=31)
     vid("botzo/FULL_LEG.gif", "botzo/leg.mp4", 1000, crf=31)

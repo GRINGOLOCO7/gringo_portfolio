@@ -123,7 +123,7 @@
     var ajax = action.replace("formsubmit.co/", "formsubmit.co/ajax/");
     var statusEl = form.querySelector(".cform__status");
     var button = form.querySelector('button[type="submit"]');
-    var fallback = "Could not send just now — please email gorlando.ieu2022@student.ie.edu directly.";
+    var fallback = "Could not send just now, please email gorlando.ieu2022@student.ie.edu directly.";
 
     function say(text, kind) {
       if (!statusEl) return;
@@ -151,7 +151,7 @@
         .then(function (data) {
           if (data && String(data.success) === "true") {
             form.reset();
-            say("Thank you — your message is on its way.", "ok");
+            say("Thank you, your message is on its way.", "ok");
           } else {
             say(fallback, "error");
           }

@@ -1,4 +1,4 @@
-# Gregorio Orlando — portfolio
+# Gregorio Orlando portfolio
 
 A single-page static portfolio.
 Live at **https://gringoloco7.github.io/gringo_portfolio/**
