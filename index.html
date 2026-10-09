@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://gringoloco7.github.io/gringo_portfolio/">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Gregorio Orlando — Robotics Researcher &amp; Engineer">
+<meta property="og:title" content="Gregorio Orlando Robotics Researcher &amp; Engineer">
 <meta property="og:description" content="Manipulators, perception and AI built into one machine — then tested with real users.">
 <meta property="og:image" content="https://gringoloco7.github.io/gringo_portfolio/assets/img/aifred/hero.webp">
 <meta property="og:url" content="https://gringoloco7.github.io/gringo_portfolio/">
@@ -498,7 +498,7 @@
   </section>
 
   <!-- ===================== ALSO BUILT ===================== -->
-  <section class="band band--tint">
+  <section id="also-built" class="band band--tint">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="hero__role">Also built</p>
@@ -558,7 +558,7 @@
 
         <article class="card">
           <figure class="fig" style="margin-bottom:1.1rem">
-            <img src="assets/img/other/2048.png" width="900" height="506" loading="lazy" decoding="async"
+            <img src="assets/img/other/2048.webp" width="1100" height="613" loading="lazy" decoding="async"
                  style="aspect-ratio:4/3;object-fit:cover"
                  alt="Presentation slide explaining the move and quicksort algorithms behind the 2048 implementation.">
           </figure>
@@ -571,16 +571,23 @@
 
         <article class="card">
           <figure class="fig" style="margin-bottom:1.1rem">
-            <img src="assets/img/botzo/circuit.webp" width="1200" height="608" loading="lazy" decoding="async"
-                 style="aspect-ratio:4/3;object-fit:cover;background:#0b1b2b"
-                 alt="Power distribution sketch: batteries into a regulator, feeding twelve servos and a Raspberry Pi.">
+            <img src="assets/img/other/neo.webp" width="1100" height="616" loading="lazy" decoding="async"
+                 style="aspect-ratio:4/3;object-fit:cover"
+                 alt="The Near-Earth Object Analyzer interface, listing asteroids returned from NASA's database for a chosen date range.">
           </figure>
-          <p class="card__kicker">Hardware R&amp;D · ongoing</p>
-          <h3 class="card__title">Compact projector head</h3>
-          <p class="card__text">AIfred's projector is the heaviest thing on the arm. A requirements-first search for its replacement: under 200 g, ~300 mm throw, 720p, HDMI off a Raspberry Pi 4.</p>
+          <p class="card__kicker">Team project · C++ course</p>
+          <h3 class="card__title">Near-Earth Object Analyzer</h3>
+          <p class="card__text">Queries NASA's Near-Earth Object database for a date range and analyses the asteroids it returns — objects whose trajectory brings them within roughly 45 million km of Earth. Built in C++ with my course team.</p>
+          <div class="card__foot"><a class="arrow-link" href="https://github.com/Torkuno/Space-Bodies-Project" rel="noopener">GitHub
+            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
         </article>
 
         <article class="card">
+          <figure class="fig" style="margin-bottom:1.1rem">
+            <img src="assets/img/other/car.webp" width="800" height="1422" loading="lazy" decoding="async"
+                 style="aspect-ratio:4/3;object-fit:cover"
+                 alt="The Formula Student car in the team garage.">
+          </figure>
           <p class="card__kicker">Formula Student · UC3M · 2024</p>
           <h3 class="card__title">Telemetry recorder</h3>
           <p class="card__text">A ROS 2 package in C++ that captured every message on the car into both a ROS bag and a spreadsheet, so the team could analyse a run instead of recalling it.</p>
@@ -595,8 +602,7 @@
   <section id="experience" class="band band--tint">
     <div class="wrap">
       <div class="section-head reveal">
-        <h2>Experience</h2>
-        <p class="lede">Two labs and a race team.</p>
+        <p class="hero__role">Experience</p>
       </div>
 
       <div class="timeline reveal">
@@ -666,8 +672,7 @@
   <section class="band">
     <div class="wrap">
       <div class="section-head reveal">
-        <h2>Technical skills</h2>
-        <p class="lede">Grouped by what I have actually shipped with. Where something is in progress, it says so.</p>
+        <p class="hero__role">Technical skills</p>
       </div>
 
       <div class="skillset reveal">
@@ -736,15 +741,14 @@
   <section id="gallery" class="band band--tint">
     <div class="wrap">
       <div class="section-head reveal">
-        <h2>Off the clock</h2>
-        <p class="lede">Freeride skiing since 2008, plus most other ways of going downhill quickly.</p>
+        <p class="hero__role">Off topic</p>
       </div>
 
       <div class="gallery reveal">
         <figure class="fig g-a">
           <img src="assets/img/gallery/ski.webp" width="810" height="1080" loading="lazy" decoding="async"
                alt="Gregorio Orlando in an orange jacket carrying skis up a steep snow slope.">
-          <figcaption>Freeride, since 2008</figcaption>
+          <figcaption>Freeride</figcaption>
         </figure>
         <figure class="fig g-b">
           <img src="assets/img/gallery/motocross.webp" width="648" height="864" loading="lazy" decoding="async"
@@ -757,14 +761,14 @@
           <figcaption>Wakeboard</figcaption>
         </figure>
         <figure class="fig g-d">
-          <img src="assets/img/gallery/downhill.webp" width="648" height="864" loading="lazy" decoding="async"
-               alt="Three mountain bikers riding a green alpine trail with peaks behind.">
-          <figcaption>Downhill, in the Alps</figcaption>
-        </figure>
-        <figure class="fig g-e">
-          <img src="assets/img/gallery/ski2.webp" width="648" height="864" loading="lazy" decoding="async"
+                    <img src="assets/img/gallery/ski2.webp" width="648" height="864" loading="lazy" decoding="async"
                alt="Two skiers standing at the top of a ridge under a deep blue sky.">
           <figcaption>Above the valley</figcaption>
+        </figure>
+        <figure class="fig g-e">
+          <img src="assets/img/gallery/downhill.webp" width="648" height="864" loading="lazy" decoding="async"
+               alt="Three mountain bikers riding a green alpine trail with peaks behind.">
+          <figcaption>Downhill</figcaption>
         </figure>
       </div>
     </div>
@@ -775,43 +779,52 @@
 <footer class="site-foot" id="contact">
   <div class="wrap">
     <div class="foot-grid">
-      <div>
+      <div class="foot-contact">
         <p class="eyebrow">Get in touch</p>
-        <h2>Looking for a master's place and robotics work.</h2>
-        <p class="lede" style="max-width: 40ch;">
-          If you work on manipulation, perception, or robots that share a space with people, I would like
-          to hear about it.
-        </p>
-        <div class="btn-row mt-2">
-          <a class="btn btn--primary" href="mailto:gorlando.ieu2022@student.ie.edu">Send an email</a>
-          <a class="btn btn--quiet" href="assets/cv/Gregorio-Orlando-CV.pdf">CV (PDF)</a>
-        </div>
+
+        <!-- Static hosting cannot post mail server-side, so this composes the
+             message and hands it to the visitor's mail client. To switch to a
+             hosted form service later, change the action/method and delete the
+             submit handler in assets/js/site.js. -->
+        <form class="cform" id="contact-form" method="post" enctype="text/plain"
+              action="mailto:gorlando.ieu2022@student.ie.edu">
+          <div class="cform__row">
+            <label class="field">
+              <span class="field__l">Name</span>
+              <input class="field__i" type="text" name="name" autocomplete="name" required>
+            </label>
+            <label class="field">
+              <span class="field__l">Your email</span>
+              <input class="field__i" type="email" name="email" autocomplete="email" required>
+            </label>
+          </div>
+          <label class="field">
+            <span class="field__l">Message</span>
+            <textarea class="field__i" name="message" rows="4" required></textarea>
+          </label>
+          <div class="cform__foot">
+            <button class="btn btn--primary" type="submit">Send message</button>
+          </div>
+          <p class="cform__note">
+            This opens your email app with the message ready to send. Prefer to write directly?
+            <a href="mailto:gorlando.ieu2022@student.ie.edu">gorlando.ieu2022@student.ie.edu</a>
+          </p>
+        </form>
       </div>
 
       <div class="foot-col">
         <h3>Elsewhere</h3>
         <ul>
-          <li><a href="https://github.com/GRINGOLOCO7" rel="me noopener">GitHub — GRINGOLOCO7</a></li>
-          <li><a href="https://cyphy.life/" rel="noopener">IE Robotics &amp; AI Lab</a></li>
-          <li><a href="https://aifred.cyphy.life/" rel="noopener">AIfred project site</a></li>
-          <li><a href="https://arxiv.org/abs/2609.38737" rel="noopener">arXiv:2609.38737</a></li>
+          <li><a href="https://github.com/GRINGOLOCO7" rel="me noopener">GitHub @GRINGOLOCO7</a></li>
+          <li><a href="https://cyphy.life/" rel="noopener">CyPhy Life research group</a></li>
           <li><a href="https://www.linkedin.com/in/gregorio-orlando-a482b8295/" rel="me noopener">LinkedIn</a></li>
         </ul>
       </div>
 
-      <div class="foot-col">
-        <h3>Projects</h3>
-        <ul>
-          <li><a href="https://aifred.cyphy.life/" rel="noopener">AIfred</a></li>
-          <li><a href="https://ieroboticsailab.github.io/botzo/" rel="noopener">Botzo</a></li>
-          <li><a href="https://github.com/IERoboticsClub/minotauro" rel="noopener">Minotauro</a></li>
-          <li><a href="#projects">All work</a></li>
-        </ul>
-      </div>
     </div>
 
     <div class="foot-bottom">
-      <span>© <span data-year>2026</span> Gregorio Orlando · Madrid</span>
+      <span>© <span data-year>2026</span> Gregorio Orlando</span>
       <span>Set in Newsreader &amp; IBM Plex Mono</span>
     </div>
   </div>

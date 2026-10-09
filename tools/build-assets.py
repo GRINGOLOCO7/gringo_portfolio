@@ -166,6 +166,9 @@ def main():
     vid("minotauro/bigfail.mp4", "minotauro/fail.mp4", 560, crf=30)
 
     print("\nOther projects")
+    img("other/NearEartObjectAnalyzer.png", "other/neo.webp", 1100)
+    img("other/car.jpeg", "other/car.webp", 800)
+    img("other/2048.png", "other/2048.webp", 1100)
     img("wallfollowercar/CarStructure.jpg", "other/wallfollower.webp", 800)
     vid("wallfollowercar/demo.mp4", "other/wallfollower.mp4", 560, crf=31)
     img("autobin/CircuitDiagram.png", "other/autobin-circuit.webp", 800)

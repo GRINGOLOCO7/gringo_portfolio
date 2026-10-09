@@ -105,6 +105,36 @@
     items.forEach(function (item) { io.observe(item.wrap); });
   }
 
+  /* ---------- Contact form ------------------------------------
+     A static site cannot post mail, so the form composes the
+     message and hands it to the visitor's mail client. The
+     address is also printed under the form, so there is always a
+     path that works even if this never runs.
+     ------------------------------------------------------------ */
+  function initContactForm() {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+
+    var to = (form.getAttribute("action") || "").replace(/^mailto:/, "");
+    if (!to) return;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (typeof form.reportValidity === "function" && !form.reportValidity()) return;
+
+      var name = (form.elements["name"].value || "").trim();
+      var email = (form.elements["email"].value || "").trim();
+      var message = (form.elements["message"].value || "").trim();
+
+      var subject = name ? "Portfolio enquiry from " + name : "Portfolio enquiry";
+      var body = [message, "", "--", name, email].join("\n");
+
+      window.location.href = "mailto:" + to +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+    });
+  }
+
   /* ---------- 3. Scroll reveal ---------- */
   function initReveal() {
     var items = document.querySelectorAll(".reveal");
@@ -163,6 +193,7 @@
 
   function init() {
     initNav();
+    initContactForm();
     initClips();
     initReveal();
     initScrollSpy();
